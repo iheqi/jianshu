@@ -8,10 +8,39 @@ import {
 	NavSearch,
 	Addtion,
 	Button,
-	SearchWrapper
+	SearchInfo,
+	SearchWrapper,
+	SearchInfoTitle,
+	SearchInfoSwitch,
+	SearchInfoItem,
+	SearchInfoList
 } from './style';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
+
+const getListArea = (show) => {
+	if (show) {
+		return (
+			<SearchInfo>
+				<SearchInfoTitle>
+					热门搜索
+					<SearchInfoSwitch>换一批</SearchInfoSwitch>
+				</SearchInfoTitle>
+
+				<SearchInfoList>
+					<SearchInfoItem>教育</SearchInfoItem>
+					<SearchInfoItem>教育</SearchInfoItem>
+					<SearchInfoItem>教育教育</SearchInfoItem>
+					<SearchInfoItem>教育</SearchInfoItem>
+					<SearchInfoItem>教育</SearchInfoItem>
+					<SearchInfoItem>教育</SearchInfoItem>
+				</SearchInfoList>
+			</SearchInfo>
+		)
+	} else {
+		return null;
+	}
+}
 
 const Header = (props) => {
 	return (
@@ -36,7 +65,10 @@ const Header = (props) => {
 							onBlur={props.handleInputBlur}
 						></NavSearch>
 					</CSSTransition>
-					<i className={props.focused ? 'iconfont focused' : 'iconfont'}>&#xe600;</i>
+					<i className={props.focused ? 'iconfont focused' : 'iconfont'}>
+						&#xe600;
+					</i>
+					{ getListArea(props.focused) }
 				</SearchWrapper>
 			</Nav>
 
@@ -53,7 +85,8 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		focused: state.header.focused
+		focused: state.getIn(['header', 'focused'])
+		// state.get('header').get('focused')
 	}
 }
 
