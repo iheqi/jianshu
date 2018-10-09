@@ -11,6 +11,7 @@ import {
 	SearchWrapper
 } from './style';
 import { connect } from 'react-redux';
+import { actionCreators } from './store';
 
 const Header = (props) => {
 	return (
@@ -59,19 +60,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		handleInputFocus() {
-			const action = {
-				type: 'search_focus'
-			};
-
-			dispatch(action);
+			dispatch(actionCreators.searchFocus());
 		},
 
 		handleInputBlur() {
-			const action = {
-				type: 'search_blur'
-			};
-
-			dispatch(action);
+			dispatch(actionCreators.searchBlur());
 		}
 	}
 }
