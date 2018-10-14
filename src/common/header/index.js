@@ -62,14 +62,16 @@ class Header extends Component {
 	}
 
 	getListArea() {
-		const { focused, mouseIn, list, page, handleMouseEnter, handleMouseLeave } = this.props;
+		const { focused, mouseIn, list, page, totalPage, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
 		const newList = list.toJS(); // immutable对象转为普通对象
 		const pageList = [];
 
-		for (let i = (page - 1) * 10; i < page * 10; i++) {
-			pageList.push(
-				<SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
-			)
+		if (newList.length) {
+			for (let i = (page - 1) * 10; i < page * 10; i++) {
+				pageList.push(
+					<SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
+				)
+			}			
 		}
 
 		if (focused || mouseIn) {
@@ -80,7 +82,7 @@ class Header extends Component {
 				>
 					<SearchInfoTitle>
 						热门搜索
-						<SearchInfoSwitch>换一批</SearchInfoSwitch>
+						<SearchInfoSwitch onClick={() => {handleChangePage(page, totalPage)}}>换一批</SearchInfoSwitch>
 					</SearchInfoTitle>
 
 					<SearchInfoList>
@@ -98,9 +100,9 @@ class Header extends Component {
 const mapStateToProps = (state) => {
 	return {
 		focused: state.getIn(['header', 'focused']),
-		// state.get('header').get('focused')
 		list: state.getIn(['header', 'list']),
 		page: state.getIn(['header', 'page']),
+		totalPage: state.getIn(['header', 'totalPage']),
 		mouseIn: state.getIn(['header', 'mouseIn'])
 	}
 }
@@ -119,6 +121,13 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		handleMouseLeave() {
 			dispatch(actionCreators.mouseLeave());
+		},
+		handleChangePage(page, totalPage) {
+			if (page < totalPage) {
+				dispatch(actionCreators.changePage(page + 1));
+			} else {
+				dispatch(actionCreators.changePage(1));
+			}
 		}		
 	}
 }
