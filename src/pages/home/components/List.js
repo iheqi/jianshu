@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 class List extends Component {
   render() {
+    console.log(this.props.list)
     return (
       this.props.list.map(item => {
         return (
@@ -23,7 +24,7 @@ class List extends Component {
 }
 
 const mapState = (state) => ({
-  list: state.get('home').get('acticleList')
+  list: state.getIn(['home', 'articleList'])
 })
 
 export default connect(mapState)(List)
