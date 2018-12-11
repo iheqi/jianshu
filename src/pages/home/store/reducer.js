@@ -43,6 +43,13 @@ const defaultState = fromJS({
 		title: '写在使用 Linux 工作一年后',
 		desc: '前言 经常看我博客和公众号的同学应该知道，我是狂热的Linuxer，对Linux系统有一种偏执的喜好，所以当你看到这篇文章的时候应该不会觉得奇怪...',
 		imgUrl: 'https://upload-images.jianshu.io/upload_images/8869373-1fd5163382f9a722.png?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240'
+	}],
+	recommendList: [{
+		id: 1,
+		imgUrl: 'https://cdn2.jianshu.io/assets/web/banner-s-3-7123fd94750759acf7eca05b871e9d17.png'
+	}, {
+		id: 2,
+		imgUrl: 'https://cdn2.jianshu.io/assets/web/banner-s-7-1a0222c91694a1f38e610be4bf9669be.png'
 	}]
 });
 
