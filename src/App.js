@@ -6,6 +6,7 @@ import store from './store';
 
 import Home from './pages/home';
 import Detail from './pages/detail';
+import Login from './pages/login';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
             <Route exact path='/' component={Home}></Route>
             {/* <Route exact path='/detail/:id' component={Detail}></Route> */}
             <Route exact path='/detail' component={Detail}></Route>
+            <Route exact path='/login' component={Login}></Route>
           </div>
         </BrowserRouter>          
       </Provider>

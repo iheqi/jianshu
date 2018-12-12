@@ -113,6 +113,7 @@ export const Button = styled.div`
 export const SearchWrapper = styled.div`
 	float: left;
 	position: relative;
+	z-index: 1;
 
 	.zoom {
 		position: absolute;
