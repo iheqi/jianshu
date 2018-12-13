@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { DetailWrapper, Header, Content } from './style';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
+import { withRouter } from 'react-router-dom';
 
 class Detail extends Component {
   render() {
@@ -21,13 +22,13 @@ class Detail extends Component {
 const mapState = (state) => ({
   title: state.getIn(['detail', 'title']),
   content: state.getIn(['detail', 'content'])
-})
+});
 
 const mapDispatch = (dispatch) => ({
   getDetail(id) {
     const action = actionCreators.getDetail(id);
     dispatch(action);    
   }
-})
+});
 
-export default connect(mapState, mapDispatch)(Detail);
+export default connect(mapState, mapDispatch)(withRouter(Detail));

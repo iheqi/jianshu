@@ -5,7 +5,7 @@ const changeDetail = (title, content) => ({
   type: constants.CHANGE_DETAIL,
   title,
   content
-})
+});
 
 export const getDetail = (id) => {
   return (dispatch) => {

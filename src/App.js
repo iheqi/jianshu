@@ -5,7 +5,7 @@ import Header from './common/header';
 import store from './store';
 
 import Home from './pages/home';
-import Detail from './pages/detail';
+import Detail from './pages/detail/loadable';
 import Login from './pages/login';
 
 class App extends Component {
@@ -16,8 +16,8 @@ class App extends Component {
           <div>
             <Header />
             <Route exact path='/' component={Home}></Route>
-            {/* <Route exact path='/detail/:id' component={Detail}></Route> */}
-            <Route exact path='/detail' component={Detail}></Route>
+            <Route exact path='/detail/:id' component={Detail}></Route>
+            {/* <Route exact path='/detail' component={Detail}></Route> */}
             <Route exact path='/login' component={Login}></Route>
           </div>
         </BrowserRouter>          
